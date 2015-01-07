@@ -31,4 +31,39 @@
 - 要は、電圧を測れば、温度がわかる
 
 ---
-## Arduinoで電圧を測る
+## Arduino
+
+![ArduinoUno_R3_Front-resized](image/ArduinoUno_R3_Front-resized.jpg)
+
+- 電圧を測る
+- 3000円
+
+---
+## 電圧を測る
+
+![ArduinoUno_R3_Front-analogpin](image/ArduinoUno_R3_Front-analogpin.jpg)
+
+- Arduinoには電圧を測ることができるピンが6つある
+
+---
+## ブレッドボード
+
+![bread-board](image/bread-board.gif) ![bread-board-connect](image/bread-board-connect.gif)
+
+- 温度センサとArduinoをつなぐために使う
+- 内部が右図のように導通している
+
+---
+## 温度センサを配置する
+
+![LM35-on-breadboard](image/LM35-on-breadboard.JPG)
+
+- こんな感じに刺します
+
+---
+## 配線する
+
+![wiring](image/wiring.JPG)
+
+- こんな感じにつないでいきます
+
