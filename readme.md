@@ -67,3 +67,75 @@
 
 - こんな感じにつないでいきます
 
+---
+## 配線図
+
+![LM35-Sketch](image/LM35-Sketch.png)
+
+---
+## プログラム
+
+```
+void setup() {
+}
+
+void loop() {
+  A_val = analogRead( A_inPin );
+  delay(1000);
+}
+```
+
+- `setup()`と`loop()`だけ書く
+- 1秒ごとに電圧を測る（1024段階）
+
+---
+## 温度に直す
+
+```
+  tempC = ((5.0 * A_val) / 1024) * 100;
+```
+
+- 電圧を求めるには
+  - 1024段階で 5 V
+  - 入力値を1024で割って、5をかける
+- 温度を求めるには
+  - 1℃で 10 mV = 1/100 V
+  - 電圧に100をかける
+
+---
+## シリアル通信
+
+![Arduino-RasPi](image/Arduino-RasPi.jpg)
+
+- ArduinoからRaspberry Piにデータを送る
+
+---
+## データを送る
+
+```
+void setup() {
+  Serial.begin(9600); // シリアル通信の初期化
+}
+
+void loop() {
+  ...
+
+  Serial.println( tempC ); // シリアル通信に温度を書き込んでいる
+  
+  ...
+}
+```
+
+---
+## データを受け取る
+
+- Raspberry PiはLinuxなので、 
+- 受け取るプログラムはいろいろな言語で書ける
+  - C
+  - Python
+  - Ruby
+  - Java
+  - Node（今回使用）
+
+---
+## 

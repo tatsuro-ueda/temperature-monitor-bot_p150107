@@ -131,7 +131,93 @@
 <ul>
 <li>こんな感じにつないでいきます</li>
 </ul>
+</div>
+      <div class='step' >
+    
+<h2>配線図</h2>
 
+<p><img src="image/LM35-Sketch.png" alt="LM35-Sketch"></p>
+</div>
+      <div class='step' >
+    
+<h2>プログラム</h2>
+<pre><code class='prettyprint '>void setup() {
+}
+
+void loop() {
+  A_val = analogRead( A_inPin );
+  delay(1000);
+}
+</code></pre>
+<ul>
+<li><code class='inline prettyprint'>setup()</code>と<code class='inline prettyprint'>loop()</code>だけ書く</li>
+<li>1秒ごとに電圧を測る（1024段階）</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>温度に直す</h2>
+<pre><code class='prettyprint '>  tempC = ((5.0 * A_val) / 1024) * 100;
+</code></pre>
+<ul>
+<li>電圧を求めるには
+
+<ul>
+<li>1024段階で 5 V</li>
+<li>入力値を1024で割って、5をかける</li>
+</ul></li>
+<li>温度を求めるには
+
+<ul>
+<li>1℃で 10 mV = 1/100 V</li>
+<li>電圧に100をかける</li>
+</ul></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>シリアル通信</h2>
+
+<p><img src="image/Arduino-RasPi.jpg" alt="Arduino-RasPi"></p>
+
+<ul>
+<li>ArduinoからRaspberry Piにデータを送る</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>データを送る</h2>
+<pre><code class='prettyprint '>void setup() {
+  Serial.begin(9600); // シリアル通信の初期化
+}
+
+void loop() {
+  ...
+
+  Serial.println( tempC ); // シリアル通信に温度を書き込んでいる
+
+  ...
+}
+</code></pre></div>
+      <div class='step' >
+    
+<h2>データを受け取る</h2>
+
+<ul>
+<li>Raspberry PiはLinuxなので、 </li>
+<li>受け取るプログラムはいろいろな言語で書ける
+
+<ul>
+<li>C</li>
+<li>Python</li>
+<li>Ruby</li>
+<li>Java</li>
+<li>Node（今回使用）</li>
+</ul></li>
+</ul>
+</div>
+      <div class='step' >
+    
       </div>
     <script src="js/impress.js"></script>
     <script>impress().init();</script>
