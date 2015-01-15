@@ -13,6 +13,15 @@
     - 歴史、城巡り
 
 ---
+## 実験
+
+以下のようにツイートしてみて下さい：
+
+```
+@weed_hubot 室内温度は？
+```
+
+---
 ## 温度センサ
 
 ![LM35](image/LM35.jpg)
@@ -136,6 +145,63 @@ void loop() {
   - Ruby
   - Java
   - Node（今回使用）
+
+---
+## Nodeプログラム（1）
+
+```
+serialport = require('serialport')
+
+portName = '/dev/ttyACM0'
+sp = new serialport.SerialPort portName, {
+  baudRate: 9600
+  dataBits: 8
+  parity: 'none'
+  stopBits: 1
+  flowControl: false
+  parser: serialport.parsers.readline("\n")
+}
+
+...
+```
+
+- シリアルポートを初期化する
+
+---
+## Nodeプログラム（2）
+
+```
+...
+
+sp.on 'data', (input) ->
+  console.log "部屋の温度は、#{input}℃です"
+```
+
+- シリアルポートからデータが送られてくるたびに、コンソールにメッセージを出す
+- 表示された！（嬉しい）
+
+---
+## Twitter Bot
+
+![Hubot](image/hubot.png)
+
+- **Hubot**を使う
+  - GitHub社製Bot
+  - Slack, IRCなどのチャットサービス用に、Slackアダプタ、IRCアダプタなどがある
+  - CoffeeScript（JavaScript）でいろいろカスタマイズできる
+  - 今回はTwitterアダプタ（後述）を改造して使う
+- Raspberry PiにHubotをインストールする
+
+---
+## hubot-twitter-userstream
+
+![hoo89](image/hoo89.jpg)
+
+作者。素性不明。
+
+- HubotのTwitterアダプタの一つ
+- パブリックストリームを監視するように改造する
+- ツイートが来たら温度を返すスクリプトを書く
 
 ---
 ## 

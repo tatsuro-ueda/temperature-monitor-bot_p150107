@@ -218,6 +218,72 @@ void loop() {
 </div>
       <div class='step' >
     
+<h2>Nodeプログラム（1）</h2>
+<pre><code class='prettyprint '>serialport = require('serialport')
+
+portName = '/dev/ttyACM0'
+sp = new serialport.SerialPort portName, {
+  baudRate: 9600
+  dataBits: 8
+  parity: 'none'
+  stopBits: 1
+  flowControl: false
+  parser: serialport.parsers.readline("\n")
+}
+
+...
+</code></pre>
+<ul>
+<li>シリアルポートを初期化する</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Nodeプログラム（2）</h2>
+<pre><code class='prettyprint '>...
+
+sp.on 'data', (input) ->
+  console.log "部屋の温度は、#{input}℃です"
+</code></pre>
+<ul>
+<li>シリアルポートからデータが送られてくるたびに、コンソールにメッセージを出す</li>
+<li>表示された！（嬉しい）</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Twitter Bot</h2>
+
+<p><img src="image/hubot.png" alt="Hubot"></p>
+
+<ul>
+<li><strong>Hubot</strong>を使う
+
+<ul>
+<li>GitHub社製Bot</li>
+<li>Slack, IRCなどのチャットサービス用に、Slackアダプタ、IRCアダプタなどがある</li>
+<li>CoffeeScript（JavaScript）でいろいろカスタマイズできる</li>
+<li>今回はTwitterアダプタ（後述）を改造して使う</li>
+</ul></li>
+<li>Raspberry PiにHubotをインストールする</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>hubot-twitter-userstream</h2>
+
+<p><img src="image/hoo89.jpg" alt="hoo89"></p>
+
+<p>作者。素性不明。</p>
+
+<ul>
+<li>HubotのTwitterアダプタの一つ</li>
+<li>パブリックストリームを監視するように改造する</li>
+<li>ツイートが来たら温度を返すスクリプトを書く</li>
+</ul>
+</div>
+      <div class='step' >
+    
       </div>
     <script src="js/impress.js"></script>
     <script>impress().init();</script>
