@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <link href="css/reset.css" rel="stylesheet" />
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="css/favicon.png" />
+    <link rel="apple-touch-icon" href="css/apple-touch-icon.png" />
+    <!-- Code Prettifier: -->
+<link href="css/highlight.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <link href="css/style.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Ultra' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+  <div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  </div>
+    <div id="impress">
+    <div class='step' >
+    
+<h2>Raspberry Piで</h2>
+
+<h2>気温を知らせるTwitter Botをつくる</h2>
+</div>
+      <div class='step' >
+    
+<h2>自己紹介</h2>
+
+<p><img src="image/weed.jpg" alt="Weed">　植田達郎（@weed_7777）</p>
+
+<ul>
+<li>フリーランス
+
+<ul>
+<li>JavaScript</li>
+<li>物理教材ビデオ作成</li>
+</ul></li>
+<li>趣味
+
+<ul>
+<li>歴史、城巡り</li>
+</ul></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>実験</h2>
+
+<p>以下のようにツイートしてみて下さい：</p>
+<pre><code class='prettyprint '>@weed_hubot 室内温度は？
+</code></pre></div>
+      <div class='step' >
+    
+<h2>温度センサ</h2>
+
+<p><img src="image/LM35.jpg" alt="LM35"></p>
+
+<ul>
+<li>120円</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>温度の測り方</h2>
+
+<p><img src="image/LM35-pin.png" alt="LM35-pin"></p>
+
+<ul>
+<li>摂氏（℃）に比例した電圧出力
+
+<ul>
+<li>例
+
+<ul>
+<li>０℃→０Ｖ</li>
+<li>２０℃→２００ｍＶ</li>
+</ul></li>
+</ul></li>
+<li>要は、電圧を測れば、温度がわかる</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Arduino</h2>
+
+<p><img src="image/ArduinoUno_R3_Front-resized.jpg" alt="ArduinoUno_R3_Front-resized"></p>
+
+<ul>
+<li>電圧を測る</li>
+<li>3000円</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>電圧を測る</h2>
+
+<p><img src="image/ArduinoUno_R3_Front-analogpin.jpg" alt="ArduinoUno_R3_Front-analogpin"></p>
+
+<ul>
+<li>Arduinoには電圧を測ることができるピンが6つある</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>ブレッドボード</h2>
+
+<p><img src="image/bread-board.gif" alt="bread-board"> <img src="image/bread-board-connect.gif" alt="bread-board-connect"></p>
+
+<ul>
+<li>温度センサとArduinoをつなぐために使う</li>
+<li>内部が右図のように導通している</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>温度センサを配置する</h2>
+
+<p><img src="image/LM35-on-breadboard.JPG" alt="LM35-on-breadboard"></p>
+
+<ul>
+<li>こんな感じに刺します</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>配線する</h2>
+
+<p><img src="image/wiring.JPG" alt="wiring"></p>
+
+<ul>
+<li>こんな感じにつないでいきます</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>配線図</h2>
+
+<p><img src="image/LM35-Sketch.png" alt="LM35-Sketch"></p>
+</div>
+      <div class='step' >
+    
+<h2>プログラム</h2>
+<pre><code class='prettyprint '>void setup() {
+}
+
+void loop() {
+  A_val = analogRead( A_inPin );
+  delay(1000);
+}
+</code></pre>
+<ul>
+<li><code class='inline prettyprint'>setup()</code>と<code class='inline prettyprint'>loop()</code>だけ書く</li>
+<li>1秒ごとに電圧を測る（1024段階）</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>温度に直す</h2>
+<pre><code class='prettyprint '>  tempC = ((5.0 * A_val) / 1024) * 100;
+</code></pre>
+<ul>
+<li>電圧を求めるには
+
+<ul>
+<li>1024段階で 5 V</li>
+<li>入力値を1024で割って、5をかける</li>
+</ul></li>
+<li>温度を求めるには
+
+<ul>
+<li>1℃で 10 mV = 1/100 V</li>
+<li>電圧に100をかける</li>
+</ul></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>シリアル通信</h2>
+
+<p><img src="image/Arduino-RasPi.jpg" alt="Arduino-RasPi"></p>
+
+<ul>
+<li>ArduinoからRaspberry Piにデータを送る</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>データを送る</h2>
+<pre><code class='prettyprint '>void setup() {
+  Serial.begin(9600); // シリアル通信の初期化
+}
+
+void loop() {
+  ...
+
+  Serial.println( tempC ); // シリアル通信に温度を書き込んでいる
+
+  ...
+}
+</code></pre></div>
+      <div class='step' >
+    
+<h2>データを受け取る</h2>
+
+<ul>
+<li>Raspberry PiはLinuxなので、 </li>
+<li>受け取るプログラムはいろいろな言語で書ける
+
+<ul>
+<li>C</li>
+<li>Python</li>
+<li>Ruby</li>
+<li>Java</li>
+<li>Node（今回使用）</li>
+</ul></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Nodeプログラム（1）</h2>
+<pre><code class='prettyprint '>serialport = require('serialport')
+
+portName = '/dev/ttyACM0'
+sp = new serialport.SerialPort portName, {
+  baudRate: 9600
+  dataBits: 8
+  parity: 'none'
+  stopBits: 1
+  flowControl: false
+  parser: serialport.parsers.readline("\n")
+}
+
+...
+</code></pre>
+<ul>
+<li>シリアルポートを初期化する</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Nodeプログラム（2）</h2>
+<pre><code class='prettyprint '>...
+
+sp.on 'data', (input) ->
+  console.log "部屋の温度は、#{input}℃です"
+</code></pre>
+<ul>
+<li>シリアルポートからデータが送られてくるたびに、コンソールにメッセージを出す</li>
+<li>表示された！（嬉しい）</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Twitter Bot</h2>
+
+<p><img src="image/hubot.png" alt="Hubot"></p>
+
+<ul>
+<li><strong>Hubot</strong>を使う
+
+<ul>
+<li>GitHub社製Bot</li>
+<li>Slack, IRCなどのチャットサービス用に、Slackアダプタ、IRCアダプタなどがある</li>
+<li>CoffeeScript（JavaScript）でいろいろカスタマイズできる</li>
+<li>今回はTwitterアダプタ（後述）を改造して使う</li>
+</ul></li>
+<li>Raspberry PiにHubotをインストールする</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>hubot-twitter-userstream</h2>
+
+<p><img src="image/hoo89.jpg" alt="hoo89"></p>
+
+<p>作者。素性不明。</p>
+
+<ul>
+<li>HubotのTwitterアダプタの一つ</li>
+<li>パブリックストリームを監視するように改造する</li>
+<li>ツイートが来たら温度を返すスクリプトを書く</li>
+</ul>
+</div>
+      <div class='step' >
+    
+      </div>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>
+    
