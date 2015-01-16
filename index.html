@@ -259,19 +259,15 @@ sp.on 'data', (input) ->
 </div>
       <div class='step' >
     
-<h2>Twitter Bot</h2>
+<h2>Hubot</h2>
 
 <p><img src="image/hubot.png" alt="Hubot"></p>
 
 <ul>
-<li><strong>Hubot</strong>を使う
-
-<ul>
 <li>GitHub社製Bot</li>
-<li>Slack, IRCなどのチャットサービス用に、Slackアダプタ、IRCアダプタなどがある</li>
-<li>CoffeeScript（JavaScript）でいろいろカスタマイズできる</li>
+<li>Slack, IRCなどのチャットサービス用に、それぞれアダプタがある</li>
+<li>JavaScript / CoffeeScriptでいろいろカスタマイズできる</li>
 <li>今回はTwitterアダプタ（後述）を改造して使う</li>
-</ul></li>
 <li>Raspberry PiにHubotをインストールする</li>
 </ul>
 </div>
@@ -279,9 +275,7 @@ sp.on 'data', (input) ->
     
 <h2>hubot-twitter-userstream</h2>
 
-<p><img src="image/hoo89.jpg" alt="hoo89"></p>
-
-<p>作者。素性不明。</p>
+<p><img src="image/hoo89.jpg" alt="hoo89"> 作者。素性不明。</p>
 
 <ul>
 <li>HubotのTwitterアダプタの一つ</li>
@@ -291,6 +285,55 @@ sp.on 'data', (input) ->
 </div>
       <div class='step' >
     
+<h2>パブリックストリーム</h2>
+
+<p>元のコード</p>
+<pre><code class='prettyprint '>stream = @client.stream('user')
+</code></pre>
+<p>改変したコード</p>
+<pre><code class='prettyprint '>stream = @client.stream('statuses/filter', {
+    track: "@#{user.screen_name}" 
+})
+
+</code></pre>
+<ul>
+<li>要はメンションを監視するようにした。</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>まとめ1</h2>
+
+<ul>
+<li>温度センサの値をTwitterで返すことができるようにした
+
+<ol>
+<li>温度センサ</li>
+<li>→Arduino（電圧）</li>
+<li>→Raspberry Pi（シリアル通信）</li>
+<li>→Twitter（Hubot）</li>
+</ol></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>まとめ2</h2>
+
+<ul>
+<li>Raspberry Piは使いやすい
+
+<ol>
+<li>今回のアプリケーションは2日でできた</li>
+<li>ほぼUbuntu / Linuxと同じ</li>
+<li>膨大なノウハウをそのまま使うことができる</li>
+<li>膨大なドライバをそのまま使うことができる</li>
+<li>ハマりどころ（Wifiの設定など）がケアされている</li>
+<li>Python, Ruby, NodeなどのRasPi用ライブラリが充実している</li>
+</ol></li>
+</ul>
+
+<p>個人的な感触としては、Arduinoよりはるかに使いやすい（ただし、Arduinoはアナログ電圧を読み取ることができる）</p>
+
       </div>
     <script src="js/impress.js"></script>
     <script>impress().init();</script>
