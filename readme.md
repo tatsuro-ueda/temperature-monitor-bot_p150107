@@ -18,7 +18,7 @@
 以下のようにツイートしてみて下さい：
 
 ```
-@weed_hubot 室内温度は？
+@weed_hubot 温度は？
 ```
 
 ---
@@ -130,7 +130,7 @@ void loop() {
   ...
 
   Serial.println( tempC ); // シリアル通信に温度を書き込んでいる
-  
+
   ...
 }
 ```
@@ -138,7 +138,7 @@ void loop() {
 ---
 ## データを受け取る
 
-- Raspberry PiはLinuxなので、 
+- Raspberry PiはLinuxなので、
 - 受け取るプログラムはいろいろな言語で書ける
   - C
   - Python
@@ -181,27 +181,64 @@ sp.on 'data', (input) ->
 - 表示された！（嬉しい）
 
 ---
-## Twitter Bot
+## Hubot
 
 ![Hubot](image/hubot.png)
 
-- **Hubot**を使う
-  - GitHub社製Bot
-  - Slack, IRCなどのチャットサービス用に、Slackアダプタ、IRCアダプタなどがある
-  - CoffeeScript（JavaScript）でいろいろカスタマイズできる
-  - 今回はTwitterアダプタ（後述）を改造して使う
+- GitHub社製Bot
+- Slack, IRCなどのチャットサービス用に、それぞれアダプタがある
+- JavaScript / CoffeeScriptでいろいろカスタマイズできる
+- 今回はTwitterアダプタ（後述）を改造して使う
 - Raspberry PiにHubotをインストールする
 
 ---
 ## hubot-twitter-userstream
 
-![hoo89](image/hoo89.jpg)
-
-作者。素性不明。
+![hoo89](image/hoo89.jpg) 作者。素性不明。
 
 - HubotのTwitterアダプタの一つ
 - パブリックストリームを監視するように改造する
 - ツイートが来たら温度を返すスクリプトを書く
 
 ---
-## 
+## パブリックストリーム
+
+元のコード
+
+```
+stream = @client.stream('user')
+```
+
+改変したコード
+
+```
+stream = @client.stream('statuses/filter', {
+    track: "@#{user.screen_name}"
+})
+
+```
+
+- 要はメンションを監視するようにした
+- これで、メンションを監視して特定のキーワードが入っていれば温度を返すことができた
+
+---
+## まとめ1
+
+- 温度センサの値をTwitterで返すことができるようにした
+  1. 温度センサ
+  2. →Arduino（電圧）
+  3. →Raspberry Pi（シリアル通信）
+  4. →Twitter（Hubot）
+
+---
+## まとめ2
+
+- Raspberry Piは使いやすい
+  1. 今回のアプリケーションは2日でできた
+  1. ほぼUbuntu / Linuxと同じ
+  1. 膨大なノウハウをそのまま使うことができる
+  1. 膨大なドライバをそのまま使うことができる
+  1. ハマりどころ（Wifiの設定など）がケアされている
+  1. Python, Ruby, NodeなどのRasPi用ライブラリが充実している
+
+個人的な感触としては、Arduinoよりはるかに使いやすい（ただし、Arduinoはアナログ電圧を読み取ることができる）
