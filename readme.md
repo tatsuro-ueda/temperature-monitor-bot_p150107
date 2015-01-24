@@ -1,16 +1,31 @@
 ## Raspberry Piで
 ## 気温を知らせるTwitter Botをつくる
 
+- スライドは29枚です
+
+- [github.com/weed/temperature-monitor-bot_p150107](https://github.com/weed/temperature-monitor-bot_p150107)
+
+  - 質問などは**懇親会**で聞いていただくか、
+  - 上のリポジトリに**Issue**で投げて下さい
+
 ---
 ## 自己紹介
 
 ![Weed](image/weed.jpg)　植田達郎（@weed_7777）
 
-- フリーランス
-    - JavaScript
-    - 物理教材ビデオ作成
+- 元教員（10年間）
+  - 中学理科、高校物理
+- フリーランス（2年目）
+  - 画像処理（勉強中）
+  - 物理教材ビデオ作成（デモ）
+  - JavaScript, ObjC
 - 趣味
-    - 歴史、城巡り
+  - 城巡り
+
+---
+## 今回作ったもの
+
+![全体像](image/zentai.jpg)
 
 ---
 ## 実験
@@ -136,15 +151,29 @@ void loop() {
 ```
 
 ---
-## データを受け取る
+## データを受け取る：Raspberry Pi 
 
-- Raspberry PiはLinuxなので、
-- 受け取るプログラムはいろいろな言語で書ける
+![raspi-spec](image/raspi-spec.jpg)
+
+---
+## 価格
+
+![raspi-price](image/raspi-price.jpg)
+
+---
+## Raspberry PiはLinux
+
+- ・・・なので、受け取るプログラムはいろいろな言語で書ける
   - C
   - Python
   - Ruby
   - Java
   - Node（今回使用）
+
+---
+## ここでボソッと
+
+Node（JavaScript）、やってられん（懇親会で）
 
 ---
 ## Nodeプログラム（1）
@@ -222,6 +251,11 @@ stream = @client.stream('statuses/filter', {
 - これで、メンションを監視して特定のキーワードが入っていれば温度を返すことができた
 
 ---
+## 実際の様子
+
+![Tweet](image/tweet.jpg)
+
+---
 ## まとめ1
 
 - 温度センサの値をTwitterで返すことができるようにした
@@ -235,10 +269,25 @@ stream = @client.stream('statuses/filter', {
 
 - Raspberry Piは使いやすい
   1. 今回のアプリケーションは2日でできた
-  1. ほぼUbuntu / Linuxと同じ
+- ほぼUbuntu / Linuxと同じ、つまり・・・
   1. 膨大なノウハウをそのまま使うことができる
   1. 膨大なドライバをそのまま使うことができる
-  1. ハマりどころ（Wifiの設定など）がケアされている
-  1. Python, Ruby, NodeなどのRasPi用ライブラリが充実している
+- ハマりどころ（Wifiの設定など）がケアされている
+- Python, Ruby, NodeなどのRasPi用ライブラリが充実している
+- micro SDカードを入れ替えれば、別のハードウェア・アプリケーションにできる。新たに買わなくて良い。素晴らしい！
 
 個人的な感触としては、Arduinoよりはるかに使いやすい（ただし、Arduinoはアナログ電圧を読み取ることができる）
+
+---
+## まとめ3
+
+- 何か一つハードウェア作品を作っておくと良い
+- なぜなら、気軽にMake系イベントに申し込める！
+- 本命は開発中でも企画中でも妄想中でも、心配せずに申し込める
+- Make系イベントに「出展側」で参加すると大変やりがいがある
+
+というわけで皆さん、Arduino講習会をやりましょう
+
+[Arduino入門 (全12回) ドットインストール](http://dotinstall.com/lessons/basic_arduino)
+
+（おわり）

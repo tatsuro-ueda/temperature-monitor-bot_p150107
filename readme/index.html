@@ -15,9 +15,7 @@
 <script>hljs.initHighlightingOnLoad();</script>
 
     <link href="css/style.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,800italic,300,400,800' rel='stylesheet' type='text/css'>    
-
-
+<link href='http://fonts.googleapis.com/css?family=Ultra' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
@@ -31,6 +29,16 @@
 <h2>Raspberry Piで</h2>
 
 <h2>気温を知らせるTwitter Botをつくる</h2>
+
+<ul>
+<li><p>スライドは29枚です</p></li>
+<li><p><a href="https://github.com/weed/temperature-monitor-bot_p150107">github.com/weed/temperature-monitor-bot_p150107</a></p>
+
+<ul>
+<li>質問などは<strong>懇親会</strong>で聞いていただくか、</li>
+<li>上のリポジトリに<strong>Issue</strong>で投げて下さい</li>
+</ul></li>
+</ul>
 </div>
       <div class='step' >
     
@@ -39,18 +47,30 @@
 <p><img src="image/weed.jpg" alt="Weed">　植田達郎（@weed_7777）</p>
 
 <ul>
-<li>フリーランス
+<li>元教員（10年間）
 
 <ul>
-<li>JavaScript</li>
-<li>物理教材ビデオ作成</li>
+<li>中学理科、高校物理</li>
+</ul></li>
+<li>フリーランス（2年目）
+
+<ul>
+<li>画像処理（勉強中）</li>
+<li>物理教材ビデオ作成（デモ）</li>
+<li>JavaScript, ObjC</li>
 </ul></li>
 <li>趣味
 
 <ul>
-<li>歴史、城巡り</li>
+<li>城巡り</li>
 </ul></li>
 </ul>
+</div>
+      <div class='step' >
+    
+<h2>今回作ったもの</h2>
+
+<p><img src="image/zentai.jpg" alt="全体像"></p>
 </div>
       <div class='step' >
     
@@ -210,11 +230,22 @@ void loop() {
 </code></pre></div>
       <div class='step' >
     
-<h2>データを受け取る</h2>
+<h2>データを受け取る：Raspberry Pi</h2>
+
+<p><img src="image/raspi-spec.jpg" alt="raspi-spec"></p>
+</div>
+      <div class='step' >
+    
+<h2>価格</h2>
+
+<p><img src="image/raspi-price.jpg" alt="raspi-price"></p>
+</div>
+      <div class='step' >
+    
+<h2>Raspberry PiはLinux</h2>
 
 <ul>
-<li>Raspberry PiはLinuxなので、</li>
-<li>受け取るプログラムはいろいろな言語で書ける
+<li>・・・なので、受け取るプログラムはいろいろな言語で書ける
 
 <ul>
 <li>C</li>
@@ -224,6 +255,12 @@ void loop() {
 <li>Node（今回使用）</li>
 </ul></li>
 </ul>
+</div>
+      <div class='step' >
+    
+<h2>ここでボソッと</h2>
+
+<p>Node（JavaScript）、やってられん（懇親会で）</p>
 </div>
       <div class='step' >
     
@@ -305,6 +342,12 @@ sp.on 'data', (input) ->
 </div>
       <div class='step' >
     
+<h2>実際の様子</h2>
+
+<p><img src="image/tweet.jpg" alt="Tweet"></p>
+</div>
+      <div class='step' >
+    
 <h2>まとめ1</h2>
 
 <ul>
@@ -327,15 +370,36 @@ sp.on 'data', (input) ->
 
 <ol>
 <li>今回のアプリケーションは2日でできた</li>
-<li>ほぼUbuntu / Linuxと同じ</li>
+</ol></li>
+<li>ほぼUbuntu / Linuxと同じ、つまり・・・
+
+<ol>
 <li>膨大なノウハウをそのまま使うことができる</li>
 <li>膨大なドライバをそのまま使うことができる</li>
+</ol></li>
 <li>ハマりどころ（Wifiの設定など）がケアされている</li>
 <li>Python, Ruby, NodeなどのRasPi用ライブラリが充実している</li>
-</ol></li>
+<li>micro SDカードを入れ替えれば、別のハードウェア・アプリケーションにできる。新たに買わなくて良い。素晴らしい！</li>
 </ul>
 
 <p>個人的な感触としては、Arduinoよりはるかに使いやすい（ただし、Arduinoはアナログ電圧を読み取ることができる）</p>
+</div>
+      <div class='step' >
+    
+<h2>まとめ3</h2>
+
+<ul>
+<li>何か一つハードウェア作品を作っておくと良い</li>
+<li>なぜなら、気軽にMake系イベントに申し込める！</li>
+<li>本命は開発中でも企画中でも妄想中でも、心配せずに申し込める</li>
+<li>Make系イベントに「出展側」で参加すると大変やりがいがある</li>
+</ul>
+
+<p>というわけで皆さん、Arduino講習会をやりましょう</p>
+
+<p><a href="http://dotinstall.com/lessons/basic_arduino">Arduino入門 (全12回) ドットインストール</a></p>
+
+<p>（おわり）</p>
 
       </div>
     <script src="js/impress.js"></script>
