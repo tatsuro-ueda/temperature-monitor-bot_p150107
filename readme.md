@@ -269,14 +269,36 @@ stream = @client.stream('statuses/filter', {
 
 - Raspberry Piは使いやすい
   1. 今回のアプリケーションは2日でできた
+  2. 見えるところ・見えないところで、いろいろケアされている感じ（Wifiの設定など）
 - ほぼUbuntu / Linuxと同じ、つまり・・・
   1. 膨大なノウハウをそのまま使うことができる
   1. 膨大なドライバをそのまま使うことができる
-- ハマりどころ（Wifiの設定など）がケアされている
 - Python, Ruby, NodeなどのRasPi用ライブラリが充実している
 - micro SDカードを入れ替えれば、別のハードウェア・アプリケーションにできる。新たに買わなくて良い。素晴らしい！
 
 個人的な感触としては、Arduinoよりはるかに使いやすい（ただし、Arduinoはアナログ電圧を読み取ることができる）
+
+---
+# 速報 
+
+---
+## Raspberry Pi 2: 2/2より販売開始
+
+![Raspberry Pi 2](image/raspi2.jpeg)
+
+- 処理速度6倍
+- メモリ2倍（1GB）
+- Raspberry Pi 1と完全互換
+- $35
+
+---
+## Windows 10
+
+![Windows 10 - Raspberry Pi 2](image/win10-raspi2.jpg)
+
+- **Windows 10 @ Raspberry Pi 2** は、Makerに無料で配布
+- MicrosoftがIoTに攻め込んだ
+- C#, Visual Studio, .Net frameworkの世界
 
 ---
 ## まとめ3
