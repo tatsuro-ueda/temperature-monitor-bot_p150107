@@ -1,13 +1,6 @@
 ## Raspberry Piで
 ## 気温を知らせるTwitter Botをつくる
 
-- スライドは29枚です
-
-- [github.com/weed/temperature-monitor-bot_p150107](https://github.com/weed/temperature-monitor-bot_p150107)
-
-  - 質問などは**懇親会**で聞いていただくか、
-  - 上のリポジトリに**Issue**で投げて下さい
-
 ---
 ## 自己紹介
 
@@ -279,9 +272,8 @@ stream = @client.stream('statuses/filter', {
 個人的な感触としては、Arduinoよりはるかに使いやすい（ただし、Arduinoはアナログ電圧を読み取ることができる）
 
 ---
-# 速報 
+## 追伸
 
----
 ## Raspberry Pi 2: 2/2より販売開始
 
 ![Raspberry Pi 2](image/raspi2.jpeg)
@@ -307,9 +299,5 @@ stream = @client.stream('statuses/filter', {
 - なぜなら、気軽にMake系イベントに申し込める！
 - 本命は開発中でも企画中でも妄想中でも、心配せずに申し込める
 - Make系イベントに「出展側」で参加すると大変やりがいがある
-
-というわけで皆さん、Arduino講習会をやりましょう
-
-[Arduino入門 (全12回) ドットインストール](http://dotinstall.com/lessons/basic_arduino)
 
 （おわり）
